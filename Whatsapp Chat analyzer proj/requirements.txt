@@ -1,8 +1,0 @@
-pandas
-streamlit
-urlextract
-emoji
-transformers
-scipy
-sklearn
-numpy
