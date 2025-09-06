@@ -56,9 +56,20 @@ def busiest_users(df):
 
     return busy, df_percent
 
+import os
+from wordcloud import WordCloud
+
+# Path to stopwords file relative to helper.py
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STOPWORDS_PATH = os.path.join(BASE_DIR, "stop_hinglish.txt")
+
 def create_wordcloud(selected_user, df):
-    with open('stop_hinglish.txt', 'r') as f:
-        stop_words = set(f.read().split())
+    stop_words = set()
+    try:
+        with open(STOPWORDS_PATH, "r", encoding="utf-8") as f:
+            stop_words = set(f.read().split())
+    except FileNotFoundError:
+        print("⚠️ stop_hinglish.txt not found. Proceeding with empty stopwords.")
 
     if selected_user != "Overall":
         df = df[df['user'] == selected_user]
@@ -68,24 +79,34 @@ def create_wordcloud(selected_user, df):
     if temp.empty:
         return WordCloud(width=500, height=500, background_color="white").generate("No Data")
 
-    temp['message'] = temp['message'].apply(lambda message: " ".join(
-        word for word in message.lower().split() if word not in stop_words))
+    temp['message'] = temp['message'].apply(
+        lambda message: " ".join(
+            word for word in message.lower().split() if word not in stop_words
+        )
+    )
 
     wc = WordCloud(width=500, height=500, min_font_size=10, background_color="white")
     df_wc = wc.generate(temp['message'].str.cat(sep=" "))
-
     return df_wc
 
 def most_common_words(selected_user, df):
-    with open('stop_hinglish.txt', 'r') as f:
-        stop_words = set(f.read().split())
+    stop_words = set()
+    try:
+        with open(STOPWORDS_PATH, "r", encoding="utf-8") as f:
+            stop_words = set(f.read().split())
+    except FileNotFoundError:
+        print("⚠️ stop_hinglish.txt not found. Proceeding with empty stopwords.")
 
     if selected_user != "Overall":
         df = df[df['user'] == selected_user]
 
     temp = df[df['message'] != 'image omitted']
 
-    words = [word for message in temp['message'] for word in message.lower().split() if word not in stop_words]
+    words = [
+        word for message in temp['message']
+        for word in message.lower().split()
+        if word not in stop_words
+    ]
 
     if not words:
         return pd.DataFrame(columns=["Word", "Frequency"])
