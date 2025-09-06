@@ -4,5 +4,5 @@ urlextract
 emoji
 transformers
 scipy
-sklearn
+scikit-learn
 numpy
