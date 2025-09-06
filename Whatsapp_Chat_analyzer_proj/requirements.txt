@@ -2,7 +2,11 @@ pandas
 streamlit
 urlextract
 emoji
+matplotlib
+seaborn
+wordcloud
+scikit-learn
+nltk
+textblob
 transformers
 scipy
-scikit-learn
-numpy
