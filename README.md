@@ -1,10 +1,10 @@
-# 📊 WhatsApp Chat Analyzer  
+#  WhatsApp Chat Analyzer  
 
 A **Streamlit web application** that allows you to analyze your WhatsApp chat data and gain meaningful insights through statistics and visualizations.  
 
 ---
 
-## 🚀 Features  
+## Features  
 
 -> **Overall Statistics**  
   - Total messages, words, media (images, audio), and links shared.  
@@ -32,7 +32,7 @@ A **Streamlit web application** that allows you to analyze your WhatsApp chat da
 
 ---
 
-## 🛠️ Tech Stack  
+## Tech Stack  
 
 - **Python**  
 - **Streamlit**  
@@ -43,7 +43,7 @@ A **Streamlit web application** that allows you to analyze your WhatsApp chat da
 
 ---
 
-## 📂 How to Use  
+## How to Use  
 
 1. Export your WhatsApp chat:  
    -> Open the chat → More → Export Chat → Without Media.  
@@ -51,7 +51,7 @@ A **Streamlit web application** that allows you to analyze your WhatsApp chat da
 
 2. Upload the exported file in the app.  
 
-3. Get instant insights and visualizations 🎉.  
+3. Get instant insights and visualizations.  
 
 ---
 
