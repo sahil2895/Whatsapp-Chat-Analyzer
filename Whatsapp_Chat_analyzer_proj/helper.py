@@ -1,3 +1,8 @@
+import os
+from wordcloud import WordCloud
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STOPWORDS_PATH = os.path.join(BASE_DIR, "stop_hinglish.txt")
 
 from urlextract import URLExtract
 from wordcloud import WordCloud
